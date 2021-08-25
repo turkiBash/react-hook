@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 
 const App = () => {
   return (
-    <Container centerContent>
+    <Container centerContent color="brand">
       <HomePage />
     </Container>
   );
