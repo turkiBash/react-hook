@@ -8,8 +8,10 @@ const HomePage = () => {
   return (
     <>
       <Button onClick={toggleColorMode}>
-        Toggle {colorMode === "light" ? "Dark" : "Light"}
+        {colorMode === "light" ? "Dark" : "Light"}
       </Button>
+
+      <Button>show more</Button>
       <Heading as="h1">Home Page</Heading>
       <Posts />
     </>
