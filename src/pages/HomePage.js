@@ -1,18 +1,16 @@
 import { Heading } from "@chakra-ui/layout";
-import { Button, useColorMode } from "@chakra-ui/react";
 import React from "react";
 import Posts from "../components/Posts";
+import Navbar from "../components/Navbar";
 
 const HomePage = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
+  
   return (
-    <>
-      <Button onClick={toggleColorMode}>
-        Toggle {colorMode === "light" ? "Dark" : "Light"}
-      </Button>
+    <div>
+      <Navbar />
       <Heading as="h1">Home Page</Heading>
       <Posts />
-    </>
+    </div>
   );
 };
 

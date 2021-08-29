@@ -1,25 +1,21 @@
-// theme.js
-import { extendTheme } from "@chakra-ui/react"
+import { mode } from "@chakra-ui/theme-tools"
 
-
-// Version 1: Using objects
-const theme = extendTheme({
-  styles: {
-    global: {
-      // styles for the `body`
-      body: {
-        bg: " #5d6d7e ",
-        color: "white",
-      },
-      // styles for the `a`
-      a: {
-        color: "teal.500",
-        _hover: {
-          textDecoration: "underline",
-        },
-      },
+const Theme = {
+  global: (props) => ({
+    "body": {
+      fontFamily: "body",
+      color: mode("gray.800", "whiteAlpha.900")(props),
+      bg: mode("white", "gray.800")(props),
+      lineHeight: "base"
     },
-  },
-})
+    "*::placeholder": {
+      color: mode("gray.400", "whiteAlpha.400")(props),
+    },
+    "*, *::before, &::after": {
+      borderColor: mode("gray.200", "whiteAlpha.300")(props),
+      wordWrap: "break-word",
+    }
+  })
+}
 
-export default theme
+export default Theme
