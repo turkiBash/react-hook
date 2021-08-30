@@ -1,4 +1,13 @@
-import { Button, Flex, useColorMode } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useColorMode,
+} from "@chakra-ui/react";
+import { IoLanguageOutline } from "react-icons/all";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React from "react";
 
@@ -13,10 +22,22 @@ const Navbar = () => {
       alignContent="space-between"
     >
       <Flex m="1" gridGap="5px">
-        <Button>Sign In</Button>
-        <Button>Sign Up</Button>
-        <Button>Language</Button>
-        <Button size="sm" onClick={toggleColorMode}>
+        <Button variant="ghost">Sign In</Button>
+        <Button variant="outline">Sign Up</Button>
+        <Menu>
+          <MenuButton as={Button} variant="outline" size="md">
+          {colorMode === "light" ? <IoLanguageOutline bgColor="black"/> : <IoLanguageOutline color="white"/>}
+          {/* <IoLanguageOutline/> */}
+          </MenuButton>
+          <MenuList>
+            {/* MenuItems are not rendered unless Menu is open */}
+            <MenuItem>العربية</MenuItem>
+            <MenuItem>English</MenuItem>
+            <MenuItem>Spain</MenuItem>
+          </MenuList>
+        </Menu>
+        {/* <Button variant="outline">Language</Button> */}
+        <Button variant="ghost" size="md" onClick={toggleColorMode}>
           {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         </Button>
       </Flex>

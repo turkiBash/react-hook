@@ -1,10 +1,11 @@
-import { Container, Heading } from "@chakra-ui/layout";
+import { Grid, Heading } from "@chakra-ui/layout";
+import { Image } from "@chakra-ui/react";
 import React from "react";
 import useFetch from "../hooks/useFetch";
 
 const Posts = () => {
   const { data, loading, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/posts"
+    "https://jsonplaceholder.typicode.com/photos?limit?=25"
   );
 
   if (loading) return <Heading as="h3"> Loading !!!</Heading>;
@@ -12,15 +13,11 @@ const Posts = () => {
   if (error) console.log(error);
 
   return (
-    <Container>
-      {data.slice(0, 20).map((data, id) => {
-        return (
-          <Heading size="sm" key={id}>
-            {data.title} : {data.body}
-          </Heading>
-        );
+    <Grid padding="15" justifyItems="center" templateColumns="repeat(3, 1fr)" gap={4}>
+      {data.slice(0,30).map((data, id) => {
+        return <Image boxSize="250px" src={data.url} key={id}></Image>;
       })}
-    </Container>
+    </Grid>
   );
 };
 
