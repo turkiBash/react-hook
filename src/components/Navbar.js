@@ -16,6 +16,8 @@ const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
+    overscrollBehaviorY="none"
+      
       direction="row"
       bgColor="teal.500"
       width="100%"
@@ -23,6 +25,9 @@ const Navbar = () => {
       alignContent="space-between"
     >
       <Flex m="1" gridGap="5px">
+        <Button variant="ghost">
+          <Link exact to="/">Home</Link>
+        </Button>
         <Button variant="ghost">
           <Link to="/LoginPage">Sign In</Link>
         </Button>
