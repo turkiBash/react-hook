@@ -5,7 +5,7 @@ import useFetch from "../hooks/useFetch";
 
 const Posts = () => {
   const { data, loading, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/photos?limit?=25"
+    "https://jsonplaceholder.typicode.com/photos"
   );
 
   if (loading) return <Heading as="h3"> Loading !!!</Heading>;
