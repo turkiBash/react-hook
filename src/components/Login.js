@@ -12,12 +12,24 @@ import {
 } from "@chakra-ui/react";
 
 const Login = () => {
-  const { colorMode } = useColorMode();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { colorMode } = useColorMode();
 
   const handleShowClick = () => {
     setShowPassword(!showPassword);
   };
+
+  const submitHandler = (e) => {
+    console.log(e.target.value)
+  }
+
+
+  const resetHandler = () => {
+    setPassword('')
+    setUsername('')
+  }
   return (
     <FormControl>
       <Flex
@@ -40,6 +52,8 @@ const Login = () => {
             placeholder="username"
             variant="outline"
             type="email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             mb="4px"
             maxW="100%"
             />
@@ -48,9 +62,12 @@ const Login = () => {
               placeholder="********"
               variant="outline"
               type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               mt="4px"
               maxW="100%"
             />
+            
             <InputRightElement mt="1" width="4.5rem">
               <Button bgColor="green.200" h="1.75rem" size="sm" onClick={handleShowClick}>
                 {showPassword ? "Hide" : "Show"}
@@ -59,10 +76,10 @@ const Login = () => {
           </InputGroup>
 
           <ButtonGroup justifyContent="center" m="2">
-            <Button type="submit" colorScheme="linkedin">
+            <Button onClick={submitHandler} type="submit" colorScheme="linkedin" >
               Login
             </Button>
-            <Button type="reset" colorScheme="red">
+            <Button onClick={resetHandler} type="reset" colorScheme="red">
               Clear
             </Button>
           </ButtonGroup>
