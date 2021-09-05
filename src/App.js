@@ -11,7 +11,7 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/">
+          <Route path="/" exact>
             <HomePage />
           </Route>
           <Route path="/LoginPage">

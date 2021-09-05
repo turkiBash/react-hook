@@ -1,14 +1,19 @@
 import { Heading } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import Posts from "../components/Posts";
-import LoginPage from "./LoginPage";
 
 const HomePage = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  let getLocalaStorage = () => {
+   const datas = JSON.parse(localStorage.getItem("data"))
+   // const isLoggedIn = getLocalaStorage["isLoggedIn"]
+   console.log(datas)
+  }
+  
   return (
     <>
       <Heading>Home Page</Heading>
-      <LoginPage />
+       <Posts />
     </>
   );
 };
