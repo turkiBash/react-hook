@@ -4,8 +4,10 @@ import React from "react";
 import useFetch from "../hooks/useFetch";
 
 const Posts = () => {
+  // let localStorageData = JSON.parse(localStorage.getItem("data"))
+  let isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
   const { data, loading, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/photos"
+    "https://jsonplaceholder.typicode.com/photos?_limit=15"
   );
 
   if (loading) return <Heading as="h3"> Loading !!!</Heading>;
@@ -13,11 +15,14 @@ const Posts = () => {
   if (error) console.log(error);
 
   return (
+    <>
+      {isLoggedIn ?  
     <Grid padding="15" justifyItems="center" templateColumns="repeat(3, 1fr)" gap={4}>
-      {data.slice(0,30).map((data, id) => {
+      {data.map((data, id) => {
         return <Image boxSize="250px" src={data.url} key={id}></Image>;
       })}
-    </Grid>
+    </Grid> : "Not Autorized"}
+    </>
   );
 };
 

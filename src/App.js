@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 
 const App = () => {
+  let isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
+  localStorage.setItem("isLoggedIn", isLoggedIn ? isLoggedIn : false )
   return (
     <ChakraProvider>
       <Router>

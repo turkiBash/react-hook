@@ -47,7 +47,7 @@ const Navbar = () => {
             {/* MenuItems are not rendered unless Menu is open */}
             <MenuItem>العربية</MenuItem>
             <MenuItem>English</MenuItem>
-            <MenuItem>Spain</MenuItem>
+            <MenuItem>Spanish</MenuItem>
           </MenuList>
         </Menu>
         {/* <Button variant="outline">Language</Button> */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Input,
@@ -24,7 +24,6 @@ const Login = () => {
   var data = {
     username,
     password,
-    isLoggedIn
   };
   
 
@@ -36,6 +35,7 @@ const Login = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setIsLoggedIn(true)
+    localStorage.setItem("isLoggedIn", true)
     localStorage.setItem("data", JSON.stringify(data));
     window.location.pathname = "/";
   };
@@ -108,3 +108,5 @@ const Login = () => {
 };
 
 export default Login;
+
+  
