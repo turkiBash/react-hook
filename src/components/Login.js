@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import {
+  emailValidation,
+  passwordValidation,
+  logInValidation
+} from "../Utilities/Validation";
+import {
   Flex,
   Input,
   useColorMode,
@@ -12,34 +17,31 @@ import {
 } from "@chakra-ui/react";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(Boolean);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { colorMode } = useColorMode();
 
   const handleShowClick = () => {
     setShowPassword(!showPassword);
   };
-  var data = {
-    username,
-    password,
-  };
-  
 
   const resetHandler = () => {
     setPassword("");
-    setUsername("");
+    setEmail("");
   };
 
   const submitHandler = (e) => {
+    // let isLoggedIn = false;
     e.preventDefault();
-    setIsLoggedIn(true)
-    localStorage.setItem("isLoggedIn", true)
-    localStorage.setItem("data", JSON.stringify(data));
-    window.location.pathname = "/";
+    // setIsLoggedIn(false);
+    if (emailValidation(email) && passwordValidation(password)) {
+      window.location.pathname = "/";
+      return logInValidation(!isLoggedIn)
+      
+    }
   };
-
 
   return (
     <Flex
@@ -61,11 +63,11 @@ const Login = () => {
             bgColor={colorMode === "light" ? "gray.100" : "gray.600"}
           >
             <Input
-              placeholder="username"
+              placeholder="email"
               variant="outline"
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               mb="4px"
               maxW="100%"
             />
@@ -93,7 +95,11 @@ const Login = () => {
             </InputGroup>
 
             <ButtonGroup justifyContent="center" m="2">
-              <Button onClick={() => setIsLoggedIn(true) } type="submit" colorScheme="linkedin">
+              <Button
+                onClick={() => setIsLoggedIn(true)}
+                type="submit"
+                colorScheme="linkedin"
+              >
                 Login
               </Button>
               <Button onClick={resetHandler} type="reset" colorScheme="red">
@@ -108,5 +114,3 @@ const Login = () => {
 };
 
 export default Login;
-
-  
